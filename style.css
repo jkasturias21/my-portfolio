@@ -107,7 +107,8 @@ nav a:hover {
   white-space: nowrap;
   overflow: hidden;
   display: inline-block;
-  animation: typing 3s steps(25, end) infinite alternate,
+  animation:
+    typing 3s steps(25, end) infinite alternate,
     blink 0.7s step-end infinite;
 }
 
@@ -134,15 +135,27 @@ nav a:hover {
 
 /* Floating Animation */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 /* Blinking Cursor Effect */
 @keyframes blink {
-  0%, 50% { border-color: #ff4d4d; }
-  51%, 100% { border-color: transparent; }
+  0%,
+  50% {
+    border-color: #ff4d4d;
+  }
+  51%,
+  100% {
+    border-color: transparent;
+  }
 }
 
 /* Responsive Styles */
@@ -195,7 +208,6 @@ nav a:hover {
   }
 }
 
-
 /* Skills Section */
 #skills {
   padding: 80px 10%;
@@ -217,8 +229,9 @@ nav a:hover {
   border: 2px solid #ff4d4d;
   border-radius: 10px;
   padding: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 1s ease forwards;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .skill-card:hover {
@@ -246,7 +259,6 @@ nav a:hover {
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 10px;
-  animation: fadeInUp 1s ease forwards;
 }
 
 .exp-card ul {
@@ -284,8 +296,9 @@ nav a:hover {
   border-radius: 12px;
   padding: 25px;
   text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 1s ease forwards;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .project-card:hover {
@@ -372,7 +385,9 @@ nav a:hover {
   object-fit: cover;
   border-radius: 8px;
   border: 2px solid #ff4d4d;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   cursor: pointer;
 }
 
@@ -454,59 +469,77 @@ nav a:hover {
   border-radius: 12px;
   padding: 25px;
   text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: fadeInUp 1s ease forwards;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-/* Form Fields */
+/* CONTACT FORM RESPONSIVE */
+.contact-form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto; /* center form */
+  padding: 10px;
+}
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
-  max-width: 500px; /* keeps form compact */
-  margin: 10px auto;
-  display: block;
+  box-sizing: border-box; /* prevents overflow */
+  margin: 10px 0;
   background: rgba(0, 0, 0, 0.4);
   color: #fff;
   border: 1px solid #ff4d4d;
   padding: 12px 15px;
   border-radius: 8px;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 
-/* Focus Effect */
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: #ff1a1a;
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.6);
+/* TEXTAREA FIX */
+.contact-form textarea {
+  resize: vertical; /* allow resize only up/down */
+  min-height: 120px;
 }
 
-/* Center the button wrapper */
-.contact-form {
-  text-align: center; /* centers button inside form */
+/* MOBILE OPTIMIZATION */
+@media (max-width: 600px) {
+  .contact-form {
+    padding: 5px;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 0.95rem;
+    padding: 10px;
+  }
+}
+/* Hidden before scroll */
+.animate {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-/* Button */
-.contact-form .btn {
-  background-color: #ff1a1a;
-  color: #fff;
-  border: none;
-  padding: 10px 25px;
-  font-weight: bold;
-  border-radius: 6px;
-  transition: 0.3s;
-  margin-top: 15px;
-  display: inline-block;
+/* When visible */
+.animate.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* SCROLL ANIMATION BASE */
+.animate,
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
 }
 
-.contact-form .btn:hover {
-  background-color: #ff4d4d;
+/* WHEN VISIBLE */
+.animate.show,
+.fade-in.appear {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-/* Optional: spacing between info & form */
-.contact-info {
-  margin-bottom: 20px;
-}
-
 /* Animations */
 @keyframes float {
   0% {
